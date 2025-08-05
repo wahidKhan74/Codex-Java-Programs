@@ -28,7 +28,6 @@ public class ProductHub {
         System.out.print("Choose option: ");
         int choice = scanner.nextInt();
         scanner.nextLine(); // consume newline
-2
 
         switch (choice) {
           case 1 -> addProduct(scanner, conn);
