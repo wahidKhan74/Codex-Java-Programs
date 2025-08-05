@@ -26,7 +26,7 @@ public class ConnectionTest {
       stm = connection.createStatement();
       System.out.println("Statement created successfully.");
       // 4. Execute query
-      boolean rst = stm.execute("SELECT * FROM wahid_store.products");
+      boolean rst = stm.execute("SELECT * FROM products");
       System.out.println("Executed query : "+ rst);
 
     } catch (ClassNotFoundException ex ) {

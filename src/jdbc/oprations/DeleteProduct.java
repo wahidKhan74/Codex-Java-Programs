@@ -3,11 +3,10 @@ package jdbc.oprations;
 import jdbc.conn.DbConn;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class ReadProducts {
+public class DeleteProduct {
 
   public static void main(String[] args) {
 
@@ -20,21 +19,17 @@ public class ReadProducts {
       Statement stm = connection.createStatement();
 
       // 4. Execute query
-      ResultSet rst = stm.executeQuery("SELECT * FROM products order by id desc");
+      String deleteQuery = "DELETE FROM products WHERE id = 5000;";
 
-      while (rst.next()){
-        System.out.println(
-          "id : " + rst.getInt("id") +
-            " name : " + rst.getString("name") +
-            " price : " + rst.getDouble("price")
-        );
-      }
+      // create or update or delete executeUpdate
+      int rowAffected = stm.executeUpdate(deleteQuery);
 
-      rst.close();
+      System.out.println(rowAffected + " Product deleted successfully");
+
+      stm.close();
       connection.close();
     } catch (SQLException ex) {
-      System.out.println("Operation Error : DB connection failed.");
+      System.out.println("Operation Error : delete product failed : " +ex.getMessage());
     }
-
   }
 }
