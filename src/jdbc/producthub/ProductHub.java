@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 import static jdbc.producthub.AddProduct.addProduct;
 import static jdbc.producthub.DeleteProduct.deleteProduct;
+import static jdbc.producthub.ProductSummary.getProductSummary;
+import static jdbc.producthub.SaveAndDelete.saveAndDeleteProduct;
 import static jdbc.producthub.UpdateProduct.updateProduct;
 import static jdbc.producthub.ViewProduct.viewProducts;
 
@@ -24,7 +26,9 @@ public class ProductHub {
         System.out.println("2. View All Products");
         System.out.println("3. Update Product");
         System.out.println("4. Delete Product");
-        System.out.println("5. Exit");
+        System.out.println("5. Save & Delete Product");
+        System.out.println("6. Get Product Summary");
+        System.out.println("7. Exit");
         System.out.print("Choose option: ");
         int choice = scanner.nextInt();
         scanner.nextLine(); // consume newline
@@ -34,7 +38,9 @@ public class ProductHub {
           case 2 -> viewProducts(conn);
           case 3 -> updateProduct(scanner, conn);
           case 4 -> deleteProduct(scanner, conn);
-          case 5 -> {
+          case 5 -> saveAndDeleteProduct(scanner, conn);
+          case 6 -> getProductSummary(conn);
+          case 7 -> {
             System.out.println("Exiting...");
             return;
           }
